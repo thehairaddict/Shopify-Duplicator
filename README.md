@@ -433,3 +433,5 @@ Built with ❤️ by Zenith Weave
 ├── README.md
 └── docker-compose.yml
 >>>>>>> 7e0f15ebd10a2859fbc938321bab021c1a2ce588
+#   T r i g g e r   r e d e p l o y   f o r   d a t a b a s e   v a r i a b l e s  
+ 
