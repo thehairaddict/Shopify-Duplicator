@@ -14,6 +14,7 @@ import { createMigrationWorker } from './services/queue/worker.js';
 import authRoutes from './routes/auth.js';
 import storesRoutes from './routes/stores.js';
 import migrationsRoutes from './routes/migrations.js';
+import testRoutes from './routes/test.js';
 
 const app = express();
 const httpServer = createServer(app);
@@ -59,6 +60,7 @@ app.use(session({
 app.use('/api/auth', authRoutes);
 app.use('/api/stores', storesRoutes);
 app.use('/api/migrations', migrationsRoutes);
+app.use('/api/test', testRoutes);
 
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
