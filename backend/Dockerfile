@@ -11,7 +11,8 @@ EXPOSE 3000
 CMD ["npm", "run", "dev"]
 
 FROM base AS production
-COPY . .
+COPY ./backend/package*.json ./
 RUN npm install --omit=dev
+COPY ./backend .
 EXPOSE 3000
 CMD ["npm", "start"]
