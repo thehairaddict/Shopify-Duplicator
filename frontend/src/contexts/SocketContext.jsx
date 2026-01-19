@@ -19,7 +19,7 @@ export function SocketProvider({ children }) {
       return;
     }
 
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+    const apiUrl = import.meta.env.VITE_API_URL || 'https://backend-production-1710.up.railway.app';
     // Convert HTTP URL to WebSocket URL
     const wsUrl = apiUrl.replace(/^https?/, 'ws');
     const newSocket = io(wsUrl, {
