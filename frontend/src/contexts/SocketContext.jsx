@@ -20,10 +20,11 @@ export function SocketProvider({ children }) {
     }
 
     const apiUrl = 'https://backend-production-1710.up.railway.app';
-    // Convert HTTP URL to WebSocket URL
-    const wsUrl = apiUrl.replace(/^https?/, 'ws');
+    // Convert HTTPS URL to WSS WebSocket URL
+    const wsUrl = apiUrl.replace(/^https/, 'wss');
     const newSocket = io(wsUrl, {
       transports: ['websocket', 'polling'],
+      secure: true, // Force secure WebSocket
     });
 
     newSocket.on('connect', () => {
