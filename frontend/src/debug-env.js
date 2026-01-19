@@ -1,8 +1,3 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
-
 // Debug environment variables
 console.log('=== Environment Variables Debug ===');
 console.log('VITE_API_URL:', import.meta.env.VITE_API_URL);
@@ -10,9 +5,10 @@ console.log('MODE:', import.meta.env.MODE);
 console.log('PROD:', import.meta.env.PROD);
 console.log('NODE_ENV:', import.meta.env.NODE_ENV);
 
-// Build timestamp: 2026-01-19 05:38:00
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-);
+// Export for easy access
+export const envDebug = {
+  VITE_API_URL: import.meta.env.VITE_API_URL,
+  MODE: import.meta.env.MODE,
+  PROD: import.meta.env.PROD,
+  NODE_ENV: import.meta.env.NODE_ENV,
+};
