@@ -14,6 +14,7 @@ import { createMigrationWorker } from './services/queue/worker.js';
 import authRoutes from './routes/auth.js';
 import storesRoutes from './routes/stores.js';
 import migrationsRoutes from './routes/migrations.js';
+import setupRoutes from './routes/setup.js';
 
 const app = express();
 const httpServer = createServer(app);
@@ -29,7 +30,19 @@ const socketManager = new SocketManager(io);
 const PgSession = connectPgSimple(session);
 
 app.use(helmet({
-  contentSecurityPolicy: config.env === 'production' ? undefined : false,
+  contentSecurityPolicy: config.env === 'production' ? {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-eval'", "'unsafe-inline'"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https:"],
+      imgSrc: ["'self'", "data:", "https:"],
+      connectSrc: ["'self'", "https:"],
+      fontSrc: ["'self'", "https:", "data:"],
+      objectSrc: ["'none'"],
+      mediaSrc: ["'self'"],
+      frameSrc: ["'self'"],
+    },
+  } : false,
 }));
 app.use(compression());
 app.use(cors(config.cors));
@@ -59,6 +72,7 @@ app.use(session({
 app.use('/api/auth', authRoutes);
 app.use('/api/stores', storesRoutes);
 app.use('/api/migrations', migrationsRoutes);
+app.use('/api/setup', setupRoutes);
 
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
@@ -116,11 +130,22 @@ httpServer.listen(PORT, () => {
 ║  Environment: ${config.env}                          ║
 ║  Frontend URL: ${config.cors.origin}      ║
 ║                                                           ║
-║  📧 hi@zenithweave.com                                   ║
-║  📞 +201011400020                                        ║
+║                                                           ║
 ║                                                           ║
 ╚═══════════════════════════════════════════════════════════╝
   `);
+
+  // Auto-setup database on startup
+  if (process.env.NODE_ENV === 'production') {
+    try {
+      console.log('🗄️ Running database setup...');
+      await import('./database/migrate.js');
+      await import('./database/seed.js');
+      console.log('✅ Database setup completed');
+    } catch (error) {
+      console.log('⚠️ Database setup skipped (might already exist):', error.message);
+    }
+  }
 });
 
 process.on('SIGTERM', async () => {
