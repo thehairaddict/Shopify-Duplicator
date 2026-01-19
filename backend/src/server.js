@@ -121,19 +121,19 @@ httpServer.listen(PORT, () => {
 ╚═══════════════════════════════════════════════════════════╝
   `);
 
-  // Auto-setup database on startup
-  if (process.env.NODE_ENV === 'production') {
-    (async () => {
-      try {
-        console.log('🗄️ Running database setup...');
-        await import('./database/migrate.js');
-        await import('./database/seed.js');
-        console.log('✅ Database setup completed');
-      } catch (error) {
-        console.log('⚠️ Database setup skipped (might already exist):', error.message);
-      }
-    })();
-  }
+  // Auto-setup database on startup - DISABLED
+  // if (process.env.NODE_ENV === 'production') {
+  //   (async () => {
+  //     try {
+  //       console.log('🗄️ Running database setup...');
+  //       await import('./database/migrate.js');
+  //       await import('./database/seed.js');
+  //       console.log('✅ Database setup completed');
+  //     } catch (error) {
+  //       console.log('⚠️ Database setup skipped (might already exist):', error.message);
+  //     }
+  //   })();
+  // }
 });
 
 process.on('SIGTERM', async () => {
