@@ -1,4 +1,24 @@
+<p align="center">
+  <img src="https://zenithweave.com/wp-content/uploads/2026/01/Untitled-design.jpg" width="140" alt="Zenith Weave Logo" />
+</p>
+
 # Zenith Weave - Shopify Store Duplicator
+
+<p align="center">
+  <b>Duplicate an entire Shopify store — safely, selectively, and professionally.</b>
+</p>
+
+<p align="center">
+  Built with ❤️ by <b>Zenith Weave</b>
+</p>
+
+<p align="center">
+  <a href="https://zenithweave.com">🌐 Website</a> •
+  <a href="mailto:hi@zenithweave.com">📧 hi@zenithweave.com</a> •
+  <a href="tel:+201011400020">📞 +20 101 140 0020</a>
+</p>
+
+---
 
 A production-ready web application for duplicating Shopify stores with granular control, real-time progress tracking, and safe API usage.
 
@@ -13,9 +33,58 @@ A production-ready web application for duplicating Shopify stores with granular 
 - **Cyberpunk UI**: Beautiful dark mode with neon accents
 - **Production Ready**: Docker-optimized for Railway deployment
 
+### 🧩 Selective Migration
+Choose exactly what you want to duplicate:
+- Themes
+- Products
+- Collections
+- Pages
+- Media files
+
+### 📊 Live Progress Tracking
+- Module-level progress bars
+- Global migration progress
+- Real-time logs
+- Estimated remaining time
+
+### 🔐 Secure Credentials
+- Encrypted storage
+- Separate source & destination credentials
+- No hardcoded secrets
+
+### 🎨 Stunning Dashboard
+- ☀️ Light Mode
+- 🌙 Cyberpunk Dark Mode
+- Responsive & mobile-friendly
+- Zenith Weave branding
+
+---
+
+## 📦 What Gets Migrated
+
+| Module        | Included |
+|--------------|----------|
+| 🎨 Theme      | Active theme only (sections, assets, templates, settings) |
+| 🛍 Products   | Products, variants, images, pricing, metafields |
+| 📂 Collections| Smart & manual collections, rules, images |
+| 📄 Pages      | Content, templates, handles |
+| 🖼 Media      | Files uploaded to Shopify Files |
+
+### ❌ Not Included (Manual Setup)
+- Orders
+- Customers
+- Payments
+- Shipping
+- Taxes
+- Store settings
+
+---
+>>>>>>> 7e0f15ebd10a2859fbc938321bab021c1a2ce588
+
 ## 🏗️ Tech Stack
 
 ### Backend
+<<<<<<< HEAD
 - Node.js + Express
 - PostgreSQL (database)
 - BullMQ + Redis (job queue)
@@ -322,3 +391,45 @@ Proprietary - All rights reserved
 ## 🙏 Credits
 
 Built with ❤️ by Zenith Weave
+=======
+- Node.js (Express)
+- Shopify Admin API (REST + GraphQL)
+- BullMQ (background jobs)
+- PostgreSQL
+
+### Frontend
+- React (Vite / Next.js)
+- Tailwind CSS
+- Dark / Light mode support
+
+### Infrastructure
+- Railway
+- Docker
+- GitHub Repository
+
+---
+
+## 🧠 Architecture Overview
+
+```txt
+├── backend/
+│   ├── services/
+│   │   ├── ThemeMigrator
+│   │   ├── ProductMigrator
+│   │   ├── CollectionMigrator
+│   │   ├── PageMigrator
+│   │   └── MediaMigrator
+│   ├── jobs/
+│   ├── controllers/
+│   └── routes/
+│
+├── frontend/
+│   ├── components/
+│   ├── pages/
+│   ├── themes/
+│   └── utils/
+│
+├── docker/
+├── README.md
+└── docker-compose.yml
+>>>>>>> 7e0f15ebd10a2859fbc938321bab021c1a2ce588
