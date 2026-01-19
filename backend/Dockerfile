@@ -11,7 +11,7 @@ EXPOSE 3000
 CMD ["npm", "run", "dev"]
 
 FROM base AS production
-RUN npm ci --omit=dev
+RUN npm install --omit=dev
 COPY . .
 EXPOSE 3000
 CMD ["npm", "start"]
