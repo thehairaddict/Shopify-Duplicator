@@ -29,19 +29,7 @@ const socketManager = new SocketManager(io);
 const PgSession = connectPgSimple(session);
 
 app.use(helmet({
-  contentSecurityPolicy: config.env === 'production' ? {
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-eval'", "'unsafe-inline'"],
-      styleSrc: ["'self'", "'unsafe-inline'", "https:"],
-      imgSrc: ["'self'", "data:", "https:"],
-      connectSrc: ["'self'", "https:"],
-      fontSrc: ["'self'", "https:", "data:"],
-      objectSrc: ["'none'"],
-      mediaSrc: ["'self'"],
-      frameSrc: ["'self'"],
-    },
-  } : false,
+  contentSecurityPolicy: false,
 }));
 app.use(compression());
 app.use(cors(config.cors));
