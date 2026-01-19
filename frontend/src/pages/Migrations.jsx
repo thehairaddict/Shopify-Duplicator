@@ -13,7 +13,7 @@ export default function Migrations() {
 
   const fetchMigrations = async () => {
     try {
-      const response = await api.get('/api/migrations');
+      const response = await api.get('/migrations');
       setMigrations(response.data.migrations);
     } catch (error) {
       console.error('Failed to fetch migrations:', error);
@@ -52,7 +52,7 @@ export default function Migrations() {
 
   const downloadReport = async (id) => {
     try {
-      const response = await api.get(`/api/migrations/${id}/export`, {
+      const response = await api.get(`/migrations/${id}/export`, {
         responseType: 'blob',
       });
       const url = window.URL.createObjectURL(new Blob([response.data]));

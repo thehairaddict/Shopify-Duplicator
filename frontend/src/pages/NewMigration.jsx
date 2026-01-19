@@ -28,7 +28,7 @@ export default function NewMigration() {
 
   const fetchStores = async () => {
     try {
-      const response = await api.get('/api/stores');
+      const response = await api.get('/stores');
       setStores(response.data.stores);
     } catch (error) {
       setError('Failed to fetch stores');
@@ -62,7 +62,7 @@ export default function NewMigration() {
     setSubmitting(true);
 
     try {
-      const response = await api.post('/api/migrations/start', formData);
+      const response = await api.post('/migrations/start', formData);
       navigate(`/migrations/${response.data.migration.id}`);
     } catch (err) {
       setError(err.response?.data?.error || 'Failed to start migration');

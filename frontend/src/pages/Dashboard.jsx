@@ -20,8 +20,8 @@ export default function Dashboard() {
   const fetchDashboardData = async () => {
     try {
       const [storesRes, migrationsRes] = await Promise.all([
-        api.get('/api/stores'),
-        api.get('/api/migrations'),
+        api.get('/stores'),
+        api.get('/migrations'),
       ]);
 
       const migrations = migrationsRes.data.migrations;

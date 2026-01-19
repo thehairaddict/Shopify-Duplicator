@@ -23,7 +23,7 @@ export default function Stores() {
 
   const fetchStores = async () => {
     try {
-      const response = await api.get('/api/stores');
+      const response = await api.get('/stores');
       setStores(response.data.stores);
     } catch (error) {
       console.error('Failed to fetch stores:', error);
@@ -36,9 +36,9 @@ export default function Stores() {
     e.preventDefault();
     try {
       if (editingStore) {
-        await api.put(`/api/stores/${editingStore.id}`, formData);
+        await api.put(`/stores/${editingStore.id}`, formData);
       } else {
-        await api.post('/api/stores', formData);
+        await api.post('/stores', formData);
       }
       setShowModal(false);
       setEditingStore(null);
@@ -52,7 +52,7 @@ export default function Stores() {
   const handleDelete = async (id) => {
     if (!confirm('Are you sure you want to delete this store?')) return;
     try {
-      await api.delete(`/api/stores/${id}`);
+      await api.delete(`/stores/${id}`);
       fetchStores();
     } catch (error) {
       alert('Failed to delete store');
@@ -75,7 +75,7 @@ export default function Stores() {
   const testConnection = async (id) => {
     setTestingConnection(id);
     try {
-      const response = await api.post(`/api/stores/${id}/test`);
+      const response = await api.post(`/stores/${id}/test`);
       alert(response.data.message);
     } catch (error) {
       alert(error.response?.data?.error || 'Connection test failed');

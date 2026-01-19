@@ -18,4 +18,12 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    // Ensure production build doesn't use localhost
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+  },
 });

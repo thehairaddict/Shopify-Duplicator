@@ -40,7 +40,7 @@ export default function MigrationDetail() {
 
   const fetchMigration = async () => {
     try {
-      const response = await api.get(`/api/migrations/${id}`);
+      const response = await api.get(`/migrations/${id}`);
       setMigration(response.data.migration);
     } catch (error) {
       console.error('Failed to fetch migration:', error);
@@ -51,7 +51,7 @@ export default function MigrationDetail() {
 
   const fetchLogs = async () => {
     try {
-      const response = await api.get(`/api/migrations/${id}/logs?limit=100`);
+      const response = await api.get(`/migrations/${id}/logs?limit=100`);
       setLogs(response.data.logs);
     } catch (error) {
       console.error('Failed to fetch logs:', error);
@@ -83,7 +83,7 @@ export default function MigrationDetail() {
   const handlePause = async () => {
     setActionLoading(true);
     try {
-      await api.put(`/api/migrations/${id}/pause`);
+      await api.put(`/migrations/${id}/pause`);
       fetchMigration();
     } catch (error) {
       alert('Failed to pause migration');
@@ -95,7 +95,7 @@ export default function MigrationDetail() {
   const handleResume = async () => {
     setActionLoading(true);
     try {
-      await api.put(`/api/migrations/${id}/resume`);
+      await api.put(`/migrations/${id}/resume`);
       fetchMigration();
     } catch (error) {
       alert('Failed to resume migration');
@@ -108,7 +108,7 @@ export default function MigrationDetail() {
     if (!confirm('Are you sure you want to cancel this migration?')) return;
     setActionLoading(true);
     try {
-      await api.delete(`/api/migrations/${id}/cancel`);
+      await api.delete(`/migrations/${id}/cancel`);
       fetchMigration();
     } catch (error) {
       alert('Failed to cancel migration');
@@ -119,7 +119,7 @@ export default function MigrationDetail() {
 
   const downloadReport = async () => {
     try {
-      const response = await api.get(`/api/migrations/${id}/export`, {
+      const response = await api.get(`/migrations/${id}/export`, {
         responseType: 'blob',
       });
       const url = window.URL.createObjectURL(new Blob([response.data]));
