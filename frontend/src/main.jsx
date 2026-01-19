@@ -3,14 +3,12 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 
-// Debug environment variables
-console.log('=== Environment Variables Debug ===');
-console.log('VITE_API_URL:', import.meta.env.VITE_API_URL);
-console.log('MODE:', import.meta.env.MODE);
-console.log('PROD:', import.meta.env.PROD);
-console.log('NODE_ENV:', import.meta.env.NODE_ENV);
+// Hardcoded Railway URLs (environment variables not working)
+console.log('=== Using Hardcoded Railway URLs ===');
+console.log('API URL: https://backend-production-1710.up.railway.app/api');
+console.log('WebSocket URL: wss://backend-production-1710.up.railway.app');
 
-// Build timestamp: 2026-01-19 05:38:00
+// Build timestamp: 2026-01-19 05:40:00
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
